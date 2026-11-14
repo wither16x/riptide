@@ -1,5 +1,5 @@
-#ifndef PCH_H_
-#define PCH_H_
+#ifndef STD_H_
+#define STD_H_
 
 // This header is meant to be precompiled.
 
@@ -11,4 +11,4 @@
 #include <algorithm>
 #include <span>
 
-#endif // PCH_H_
+#endif // STD_H_
