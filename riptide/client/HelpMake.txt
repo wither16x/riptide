@@ -1,0 +1,17 @@
+Compiler: clang++
+Version: std=c++26
+Output: build/riptide
+PCH: ../../include/std.h
+
+InputFiles {
+    src/*.cpp
+}
+
+Includes {
+    interfaces
+    ../../include
+}
+
+Modules {
+    interfaces/client/math.cppm
+}
