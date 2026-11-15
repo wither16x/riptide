@@ -1,3 +1,4 @@
 {
-    "clangd.arguments": ["--experimental-modules-support"]
+    "clangd.arguments": ["--experimental-modules-support"],
+    "clangd.path": "/usr/bin/clangd"
 }
