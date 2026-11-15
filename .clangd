@@ -3,3 +3,6 @@ CompileFlags:
 
 InlayHints:
     Enabled: No
+
+Index:
+    StandardLibrary: No

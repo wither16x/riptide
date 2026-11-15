@@ -1,0 +1,1 @@
+riptide_add_library(net DEPENDS riptide::utils)

@@ -10,5 +10,11 @@
 #include <map>
 #include <algorithm>
 #include <span>
+#include <expected>
+#include <stdexcept>
+#include <exception>
+#include <cstdint>
+#include <cstddef>
+#include <utility>
 
 #endif // STD_H_

@@ -24,7 +24,7 @@ target_precompile_headers(riptide_pch INTERFACE
 add_library(riptide_warnings INTERFACE)
 target_compile_options(riptide_warnings INTERFACE
     -Wall -Wextra -Wpedantic -Wno-gnu-line-marker -Wno-non-virtual-dtor
-    -Wcast-qual -Wconversion -Wsign-conversion
+    -Wcast-qual -Wconversion -Wsign-conversion -Wold-style-cast
 )
 
 add_subdirectory(riptide)

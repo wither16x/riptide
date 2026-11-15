@@ -306,7 +306,7 @@ private:
 
 ## 18. Braces
 
-* Do not put braces around single-statement branches.
+* Do not put braces around single-statement branches. This rule does not apply for multiline single-statement branches.
 * Never put branch statements on the same line than the condition.
 * In `if` (- `else if`) - `else` chains, do not put braces around single statement branches but if a conditional block has a multi-statement branch.
 
