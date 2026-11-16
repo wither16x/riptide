@@ -13,6 +13,8 @@ auto App::run() -> void {
 
     std::size_t len = socket.read(1024).size();
     utils::logging::info("read {} bytes from socket", len);
+
+    utils::logging::info("disconnected from server");
 }
 
 } // namespace riptide::client::app
