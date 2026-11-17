@@ -10,6 +10,8 @@ namespace riptide::net::types {
 // Data types according to
 // https://minecraft.wiki/w/Minecraft_Wiki:Projects/wiki.vg_merge/Data_types_(v47)
 
+export {
+
 using Boolean = std::uint8_t;
 constexpr Boolean FALSE = 0x00;
 constexpr Boolean TRUE = 0x01;
@@ -23,11 +25,13 @@ using Long = std::int64_t;
 using Float = float;
 using Double = double;
 
+} // export
+
 // Must not be used as a std::int32_t!
 // This type must be used with the function read_varint().
-using VarInt = std::int32_t;
+export using VarInt = std::int32_t;
 
-constexpr VarInt read_varint(std::span<std::uint8_t> buf)
+export constexpr VarInt read_varint(std::span<std::uint8_t> buf)
 {
     std::uint8_t bitoff = 0;
     std::uint8_t currbyte = 0;
@@ -48,13 +52,13 @@ constexpr VarInt read_varint(std::span<std::uint8_t> buf)
 
 // Must not be used as a std::int64_t!
 // This type must be used with the function read_varlong().
-using VarLong= std::int64_t;
+export using VarLong= std::int64_t;
 
-constexpr VarLong read_varlong(std::span<std::uint8_t> buf)
+export constexpr VarLong read_varlong(std::span<std::uint8_t> buf)
 {
     std::uint8_t bitoff = 0;
     std::uint8_t currbyte = 0;
-    std::uint32_t uresult = 0;
+    std::uint64_t uresult = 0;
     std::uint8_t nreadtmp = 0;
 
     do {
@@ -62,7 +66,7 @@ constexpr VarLong read_varlong(std::span<std::uint8_t> buf)
             throw utils::error::RiptideException("VarLong is too big");
 
         currbyte = buf[nreadtmp++];
-        uresult |= static_cast<std::uint32_t>((currbyte & 0x7f)) << bitoff;
+        uresult |= static_cast<std::uint64_t>((currbyte & 0x7f)) << bitoff;
         bitoff += 7;
     } while (currbyte & 0x80);
 
