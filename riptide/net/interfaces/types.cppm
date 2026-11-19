@@ -27,8 +27,10 @@ using Double = double;
 
 } // export
 
-// Must not be used as a std::int32_t!
-// This type must be used with the function read_varint().
+/**
+ * Must not be used as a std::int32_t!
+ * This type must be used with the function read_varint().
+ */
 export using VarInt = std::int32_t;
 
 export constexpr VarInt read_varint(std::span<std::uint8_t> buf)
@@ -50,8 +52,9 @@ export constexpr VarInt read_varint(std::span<std::uint8_t> buf)
     return static_cast<VarInt>(uresult);
 }
 
-// Must not be used as a std::int64_t!
-// This type must be used with the function read_varlong().
+/** Must not be used as a std::int64_t!
+ * This type must be used with the function read_varlong().
+ */
 export using VarLong= std::int64_t;
 
 export constexpr VarLong read_varlong(std::span<std::uint8_t> buf)
@@ -72,5 +75,7 @@ export constexpr VarLong read_varlong(std::span<std::uint8_t> buf)
 
     return static_cast<VarLong>(uresult);
 }
+
+export using ByteArray = std::string;
 
 } // namespace riptide::net::types

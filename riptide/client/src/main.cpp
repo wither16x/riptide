@@ -9,7 +9,7 @@ auto main() -> int {
         riptide::client::app::App app;
         app.run();
     } catch (const std::exception &e) {
-        riptide::utils::logging::err("{}: {}", e.what(), std::strerror(errno));
+        riptide::utils::logging::fatal("{}: {}", e.what(), std::strerror(errno));
     }
 
     return 0;

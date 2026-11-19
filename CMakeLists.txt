@@ -26,5 +26,8 @@ target_compile_options(riptide_warnings INTERFACE
     -Wall -Wextra -Wpedantic -Wno-gnu-line-marker -Wno-non-virtual-dtor
     -Wcast-qual -Wconversion -Wsign-conversion -Wold-style-cast
 )
+add_library(riptide_reflection INTERFACE)
+target_compile_options(riptide_reflection INTERFACE -freflection)
+target_link_libraries(riptide_pch INTERFACE riptide_reflection)
 
 add_subdirectory(riptide)

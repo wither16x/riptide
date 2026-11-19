@@ -22,7 +22,7 @@ auto create_socket() -> int {
 
 auto destroy_socket(int sockfd) -> void {
     if (::close(sockfd) == -1)
-        throw std::runtime_error("failed to close socket");
+        throw utils::error::RiptideException("failed to close socket");
 }
 
 auto create_socket_address() -> sockaddr_in {
@@ -47,17 +47,37 @@ Socket::~Socket()
 
 auto Socket::connect() -> void {
     if (::connect(fd_, reinterpret_cast<sockaddr *>(&addr_), sizeof(addr_)) != 0)
-        throw std::runtime_error("failed to connect to server");
+        throw utils::error::RiptideException("failed to connect to server");
 }
 
-auto Socket::read(std::size_t count) -> std::vector<std::uint8_t> {
+auto Socket::read(std::size_t count) -> const std::vector<std::uint8_t> {
     std::vector<std::uint8_t> data(count);
     ssize_t bytes_read = ::read(fd_, data.data(), count);
     if (bytes_read == -1)
-        throw std::runtime_error("failed to read from socket");
+        throw utils::error::RiptideException("failed to read from socket");
 
     data.resize(static_cast<std::size_t>(bytes_read));
     return data;
+}
+
+auto Socket::send(std::span<const std::uint8_t> buf) -> void {
+    if (::send(fd_, buf.data(), buf.size(), 0) == -1)
+        throw utils::error::RiptideException("failed to send bytes from socket");
+}
+
+auto Socket::send(std::span<const std::uint8_t> buf, std::size_t count) -> void {
+    if (::send(fd_, buf.data(), count, 0) == -1)
+        throw utils::error::RiptideException("failed to send bytes from socket");
+}
+
+auto Socket::receive(std::size_t count) -> const std::vector<std::uint8_t> {
+    std::vector<std::uint8_t> response(count);
+
+    ssize_t nread = ::recv(fd_, response.data(), count, 0);
+    if (nread <= 0)
+        throw utils::error::RiptideException("bad request");
+
+    return response;
 }
 
 } // namespace riptide::net::socket

@@ -20,7 +20,10 @@ public:
     ~Socket();
 
     auto connect() -> void;
-    auto read(std::size_t count) -> std::vector<std::uint8_t>;
+    auto read(std::size_t count) -> const std::vector<std::uint8_t>;
+    auto send(std::span<const std::uint8_t> buf) -> void;
+    auto send(std::span<const std::uint8_t> buf, std::size_t count) -> void;
+    auto receive(std::size_t count) -> const std::vector<std::uint8_t>;
 
     Socket &operator =(const Socket &) = delete("sockets are not copyable");
     Socket &operator =(Socket &&other) = delete("sockets are not movable");
