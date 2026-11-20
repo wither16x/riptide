@@ -40,7 +40,7 @@ function(riptide_add_library name)
 
     target_compile_features(${target} PUBLIC cxx_std_26)
     target_link_libraries(${target}
-        PRIVATE riptide_pch riptide_warnings
+        PRIVATE riptide_headers riptide_warnings riptide_reflection
         PUBLIC  ${ARG_DEPENDS})
 endfunction()
 
@@ -54,5 +54,5 @@ function(riptide_add_executable name)
 
     target_compile_features(${target} PRIVATE cxx_std_26)
     target_link_libraries(${target}
-        PRIVATE riptide_pch riptide_warnings ${ARG_DEPENDS})
+        PRIVATE riptide_warnings riptide_headers riptide_reflection ${ARG_DEPENDS})
 endfunction()

@@ -15,5 +15,8 @@
 #include <utility>
 #include <format>
 #include <chrono>
+#include <meta>
+#include <cstdint>
+#include <cstddef>
 
 #endif // STD_H_

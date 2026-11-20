@@ -1,5 +1,6 @@
 module;
 #include <sys/socket.h>
+#include <std.h>
 
 module riptide.client.app;
 

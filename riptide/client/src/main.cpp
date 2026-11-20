@@ -1,5 +1,6 @@
 #include <cerrno>
 #include <cstring>
+#include <std.h>
 
 import riptide.client.app;
 import riptide.utils.logging;

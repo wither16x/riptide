@@ -13,21 +13,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(RiptideTargets)
 
-add_library(riptide_pch INTERFACE)
-target_include_directories(riptide_pch INTERFACE
+add_library(riptide_headers INTERFACE)
+target_include_directories(riptide_headers INTERFACE
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
-target_precompile_headers(riptide_pch INTERFACE
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/std.h"
-)
+
+add_library(riptide_reflection INTERFACE)
+target_compile_options(riptide_reflection INTERFACE -freflection)
 
 add_library(riptide_warnings INTERFACE)
 target_compile_options(riptide_warnings INTERFACE
-    -Wall -Wextra -Wpedantic -Wno-gnu-line-marker -Wno-non-virtual-dtor
+    -Wall -Wextra -Wpedantic -Wno-non-virtual-dtor
     -Wcast-qual -Wconversion -Wsign-conversion -Wold-style-cast
 )
-add_library(riptide_reflection INTERFACE)
-target_compile_options(riptide_reflection INTERFACE -freflection)
-target_link_libraries(riptide_pch INTERFACE riptide_reflection)
 
 add_subdirectory(riptide)

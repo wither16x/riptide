@@ -1,5 +1,5 @@
 module;
-#include <meta>
+#include <std.h>
 
 export module riptide.net.packet;
 
@@ -32,10 +32,12 @@ auto write(std::vector<std::uint8_t> &out, const types::ByteArray &bytes) -> voi
 }
 
 export template<typename T>
-auto serialize(const T &obj, std::vector<const std::uint8_t> &out) -> void {
+auto serialize(const T &obj) -> std::vector<std::uint8_t> {
+    std::vector<std::uint8_t> out;
    template for (constexpr auto member : std::define_static_array(
     std::meta::nonstatic_data_members_of(^^T, std::meta::access_context::current())))
         write(out, obj.[:member:]);
+    return out;
 }
 
 } // namespace riptide::net::packet
