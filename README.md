@@ -2,8 +2,6 @@
 
 ![logo](/assets/images/logo.png)
 
-## THIS PROJECT IS PAUSED UNTIL CLANG SUPPORTS REFLEXION CORRECTLY
-
 A **Minecraft client** written **from scratch** in **modern C++**.
 
 ## Warning
