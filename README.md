@@ -21,14 +21,14 @@ Documentation is available [here](/docs).
 ## Build and run
 
 Make sure that the following dependencies are installed on your system:
-* The LLVM 24 toolchain with libc++ and clang++
+* GCC 16
 * The CMake build system version 4.4
 * Java (for running the test server)
 
 To build the code, run the following commands at the root of the project.
 
 ```sh
-cmake -S . -B build -G Ninja -DCMAKE_CXX_COMPILER="clang++"
+cmake -S . -B build -G Ninja -DCMAKE_CXX_COMPILER="g++"
 cmake --build build
 ```
 
